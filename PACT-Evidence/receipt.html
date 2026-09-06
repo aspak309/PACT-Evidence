@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="PACT Evidence Receipt"
+  >
+
+  <meta
+    name="theme-color"
+    content="#070b14"
+  >
+
+  <title>PACT Evidence Receipt</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- PDF Generator -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+  ></script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+
+  <header class="nav">
+    <div class="container nav-inner">
+
+      <a href="index.html" class="brand">
+        PACT<span>.</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="create.html">Create Record</a>
+        <a href="verify.html">Verify</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- Page Header -->
+
+    <section class="page-header">
+
+      <div class="container">
+
+        <span class="eyebrow">
+          EVIDENCE RECEIPT
+        </span>
+
+        <h1>PACT Record Receipt</h1>
+
+        <p>
+          A structured receipt containing the information
+          submitted to PACT and its recorded metadata.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Loading -->
+
+    <section
+      id="receiptLoading"
+      class="section"
+    >
+
+      <div class="container">
+
+        <div class="card">
+
+          <div class="loading">
+            Loading PACT record...
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Error -->
+
+    <section
+      id="receiptErrorSection"
+      class="section"
+      hidden
+    >
+
+      <div class="container">
+
+        <div
+          id="receiptError"
+          class="notice error"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Receipt -->
+
+    <section
+      id="receiptSection"
+      class="section"
+      hidden
+    >
+
+      <div class="container">
+
+        <!-- Printable Receipt -->
+
+        <article
+          id="receiptDocument"
+          class="card"
+          style="
+            max-width:900px;
+            margin:0 auto;
+            background:#ffffff;
+            color:#111827;
+          "
+        >
+
+          <!-- Receipt Header -->
+
+          <div
+            style="
+              display:flex;
+              justify-content:space-between;
+              gap:24px;
+              align-items:flex-start;
+              flex-wrap:wrap;
+              padding-bottom:24px;
+              border-bottom:1px solid #e5e7eb;
+            "
+          >
+
+            <div>
+
+              <div
+                style="
+                  font-size:32px;
+                  font-weight:800;
+                  letter-spacing:-1px;
+                "
+              >
+                PACT<span>.</span>
+              </div>
+
+              <div
+                style="
+                  margin-top:6px;
+                  color:#6b7280;
+                "
+              >
+                Evidence & Responsibility Record
+              </div>
+
+            </div>
+
+
+            <div
+              style="
+                text-align:right;
+              "
+            >
+
+              <div
+                style="
+                  font-size:12px;
+                  font-weight:700;
+                  letter-spacing:.12em;
+                  text-transform:uppercase;
+                  color:#6b7280;
+                "
+              >
+                Status
+              </div>
+
+              <div
+                id="receiptStatus"
+                style="
+                  margin-top:6px;
+                  font-size:18px;
+                  font-weight:800;
+                "
+              >
+                RECORDED
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- PACT Identity -->
+
+          <div style="margin-top:28px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              Record Identity
+            </h2>
+
+
+            <div
+              class="grid grid-2"
+            >
+
+              <div>
+
+                <div
+                  style="
+                    font-size:12px;
+                    font-weight:700;
+                    color:#6b7280;
+                    text-transform:uppercase;
+                    letter-spacing:.05em;
+                  "
+                >
+                  PACT ID
+                </div>
+
+                <div
+                  id="receiptPactId"
+                  style="
+                    margin-top:7px;
+                    font-weight:800;
+                    word-break:break-all;
+                  "
+                >
+                  —
+                </div>
+
+              </div>
+
+
+              <div>
+
+                <div
+                  style="
+                    font-size:12px;
+                    font-weight:700;
+                    color:#6b7280;
+                    text-transform:uppercase;
+                    letter-spacing:.05em;
+                  "
+                >
+                  PACT Created At
+                </div>
+
+                <div
+                  id="receiptCreatedAt"
+                  style="
+                    margin-top:7px;
+                    font-weight:700;
+                  "
+                >
+                  —
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Submitted By -->
+
+          <div style="margin-top:30px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              Submitted By
+            </h2>
+
+
+            <div
+              class="grid grid-2"
+            >
+
+              <div>
+
+                <div
+                  style="
+                    font-size:12px;
+                    font-weight:700;
+                    color:#6b7280;
+                    text-transform:uppercase;
+                  "
+                >
+                  Name
+                </div>
+
+                <div
+                  id="receiptSubmittedName"
+                  style="margin-top:7px;"
+                >
+                  —
+                </div>
+
+              </div>
+
+
+              <div>
+
+                <div
+                  style="
+                    font-size:12px;
+                    font-weight:700;
+                    color:#6b7280;
+                    text-transform:uppercase;
+                  "
+                >
+                  Email
+                </div>
+
+                <div
+                  id="receiptSubmittedEmail"
+                  style="margin-top:7px;word-break:break-word;"
+                >
+                  —
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Event -->
+
+          <div style="margin-top:30px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              Event Information
+            </h2>
+
+
+            <div>
+
+              <div
+                style="
+                  font-size:12px;
+                  font-weight:700;
+                  color:#6b7280;
+                  text-transform:uppercase;
+                "
+              >
+                What Happened?
+              </div>
+
+              <div
+                id="receiptDescription"
+                style="
+                  margin-top:8px;
+                  white-space:pre-wrap;
+                  line-height:1.65;
+                "
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div
+              class="grid grid-2"
+              style="margin-top:20px;"
+            >
+
+              <div>
+
+                <div
+                  style="
+                    font-size:12px;
+                    font-weight:700;
+                    color:#6b7280;
+                    text-transform:uppercase;
+                  "
+                >
+                  Reported Event Date
+                </div>
+
+                <div
+                  id="receiptEventDate"
+                  style="margin-top:7px;"
+                >
+                  —
+                </div>
+
+              </div>
+
+
+              <div>
+
+                <div
+                  style="
+                    font-size:12px;
+                    font-weight:700;
+                    color:#6b7280;
+                    text-transform:uppercase;
+                  "
+                >
+                  Reported Event Time
+                </div>
+
+                <div
+                  id="receiptEventTime"
+                  style="margin-top:7px;"
+                >
+                  —
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Instruction -->
+
+          <div style="margin-top:30px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              Instruction & Responsibility Context
+            </h2>
+
+
+            <div
+              class="grid grid-2"
+            >
+
+              <div>
+
+                <div
+                  style="
+                    font-size:12px;
+                    font-weight:700;
+                    color:#6b7280;
+                    text-transform:uppercase;
+                  "
+                >
+                  Instructor
+                </div>
+
+                <div
+                  id="receiptInstructor"
+                  style="margin-top:7px;"
+                >
+                  —
+                </div>
+
+              </div>
+
+
+              <div>
+
+                <div
+                  style="
+                    font-size:12px;
+                    font-weight:700;
+                    color:#6b7280;
+                    text-transform:uppercase;
+                  "
+                >
+                  AI / Person / System
+                </div>
+
+                <div
+                  id="receiptAgent"
+                  style="margin-top:7px;"
+                >
+                  —
+                </div>
+
+              </div>
+
+
+              <div>
+
+                <div
+                  style="
+                    font-size:12px;
+                    font-weight:700;
+                    color:#6b7280;
+                    text-transform:uppercase;
+                  "
+                >
+                  Organization
+                </div>
+
+                <div
+                  id="receiptOrganization"
+                  style="margin-top:7px;"
+                >
+                  —
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Purpose -->
+
+          <div style="margin-top:30px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              Purpose
+            </h2>
+
+            <div
+              id="receiptPurpose"
+              style="
+                white-space:pre-wrap;
+                line-height:1.65;
+              "
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <!-- Authority -->
+
+          <div style="margin-top:30px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              Authority / Limits
+            </h2>
+
+            <div
+              id="receiptAuthority"
+              style="
+                white-space:pre-wrap;
+                line-height:1.65;
+              "
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <!-- Outcome -->
+
+          <div style="margin-top:30px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              Actual Action / Outcome
+            </h2>
+
+            <div
+              id="receiptOutcome"
+              style="
+                white-space:pre-wrap;
+                line-height:1.65;
+              "
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <!-- Evidence -->
+
+          <div style="margin-top:30px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              Supporting Evidence
+            </h2>
+
+
+            <div
+              id="receiptEvidence"
+            >
+              No evidence attached.
+            </div>
+
+          </div>
+
+
+          <!-- Fingerprint -->
+
+          <div style="margin-top:30px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              Evidence Fingerprint
+            </h2>
+
+            <div
+              id="receiptHash"
+              style="
+                padding:16px;
+                background:#f3f4f6;
+                border:1px solid #e5e7eb;
+                border-radius:10px;
+                font-family:monospace;
+                font-size:12px;
+                line-height:1.6;
+                word-break:break-all;
+              "
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <!-- Declaration -->
+
+          <div style="margin-top:30px;">
+
+            <h2
+              style="
+                margin:0 0 18px;
+                color:#111827;
+              "
+            >
+              User Declaration
+            </h2>
+
+            <div
+              id="receiptDeclaration"
+              style="
+                line-height:1.65;
+              "
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <!-- Disclaimer -->
+
+          <div
+            style="
+              margin-top:32px;
+              padding:18px;
+              border:1px solid #d1d5db;
+              border-radius:10px;
+              background:#f9fafb;
+              font-size:12px;
+              line-height:1.65;
+              color:#4b5563;
+            "
+          >
+
+            <strong>
+              PACT Record Notice
+            </strong>
+
+            <p style="margin:8px 0 0;">
+
+              This record contains information and evidence
+              submitted by the user. PACT records the submission
+              and its server timestamp; it does not independently
+              certify that the underlying event occurred, authorize
+              the action, or assume liability for it.
+
+            </p>
+
+          </div>
+
+
+          <!-- Footer -->
+
+          <div
+            style="
+              margin-top:32px;
+              padding-top:20px;
+              border-top:1px solid #e5e7eb;
+              font-size:11px;
+              color:#6b7280;
+            "
+          >
+
+            PACT Evidence — Record Receipt
+
+          </div>
+
+        </article>
+
+
+        <!-- Actions -->
+
+        <div
+          class="actions"
+          style="
+            max-width:900px;
+            margin:24px auto 0;
+          "
+        >
+
+          <button
+            type="button"
+            id="downloadPdfBtn"
+            class="btn btn-primary"
+          >
+            Download PDF Receipt
+          </button>
+
+          <button
+            type="button"
+            id="copyReceiptLinkBtn"
+            class="btn btn-ghost"
+          >
+            Copy Verification Link
+          </button>
+
+          <a
+            id="backToRecordBtn"
+            href="#"
+            class="btn btn-ghost"
+          >
+            Back to Record
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 PACT Evidence
+      </div>
+
+      <div class="footer-links">
+
+        <a href="privacy.html">
+          Privacy
+        </a>
+
+        <a href="terms.html">
+          Terms
+        </a>
+
+        <a href="disclaimer.html">
+          Disclaimer
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- Receipt Logic -->
+
+  <script
+    type="module"
+    src="receipt.js"
+  ></script>
+
+</body>
+  </html>
