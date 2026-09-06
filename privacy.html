@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="PACT Privacy Policy — Learn how PACT handles account information, records, evidence metadata, timestamps, and privacy."
+  />
+
+  <meta
+    name="robots"
+    content="index, follow"
+  />
+
+  <title>Privacy Policy — PACT</title>
+
+  <link
+    rel="stylesheet"
+    href="./styles.css"
+  />
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+
+      <a
+        href="./index.html"
+        class="brand"
+        aria-label="PACT Home"
+      >
+        PACT
+      </a>
+
+      <div class="navlinks">
+        <a href="./index.html">Home</a>
+        <a href="./create.html">Create Record</a>
+        <a href="./verify.html">Verify</a>
+        <a href="./profile.html">Profile</a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- Main Content -->
+  <main>
+
+    <section class="page-header">
+      <div class="container">
+
+        <div class="badge">
+          PRIVACY
+        </div>
+
+        <h1>
+          Privacy Policy
+        </h1>
+
+        <p>
+          How PACT handles information submitted through the
+          Evidence &amp; Responsibility Record Platform.
+        </p>
+
+        <p class="muted">
+          Last updated: September 2026
+        </p>
+
+      </div>
+    </section>
+
+
+    <section class="section">
+      <div class="container">
+
+        <div class="content-card">
+
+          <h2>1. About PACT</h2>
+
+          <p>
+            PACT is an evidence-recording and evidence-packaging
+            platform. It allows users to create records containing
+            information they submit and supporting evidence metadata.
+          </p>
+
+          <p>
+            PACT records what the user submits and when the system
+            receives the record. PACT does not independently certify
+            that the underlying event occurred.
+          </p>
+
+
+          <h2>2. Information We Collect</h2>
+
+          <p>
+            Depending on how you use PACT, the platform may process:
+          </p>
+
+          <ul>
+            <li>Your Google account name and email address.</li>
+            <li>Information entered into a PACT record.</li>
+            <li>Reported event date and time.</li>
+            <li>Instruction, organization, agent or system information entered by you.</li>
+            <li>Purpose, authority, limits and outcome information entered by you.</li>
+            <li>Evidence file metadata.</li>
+            <li>Cryptographic fingerprints such as SHA-256 hashes.</li>
+            <li>System-generated PACT record identifiers.</li>
+            <li>Server-recorded creation timestamps.</li>
+          </ul>
+
+
+          <h2>3. Evidence Files</h2>
+
+          <p>
+            PACT's initial architecture is designed to minimize the
+            storage of original evidence files.
+          </p>
+
+          <p>
+            When evidence is selected during record creation, PACT
+            can calculate a SHA-256 fingerprint locally in the browser.
+            The initial V1 record stores evidence metadata and its
+            fingerprint rather than the original file itself.
+          </p>
+
+          <div class="notice">
+            <strong>Important:</strong>
+            A SHA-256 fingerprint is a digital identifier for a file.
+            It is not proof that the contents of the file are truthful
+            or that the underlying event occurred.
+          </div>
+
+
+          <h2>4. Google Authentication</h2>
+
+          <p>
+            PACT uses Google Sign-In for account authentication.
+            Authentication is handled through Firebase Authentication.
+          </p>
+
+          <p>
+            PACT uses the authenticated account identifier to associate
+            records with the account that created them.
+          </p>
+
+
+          <h2>5. PACT Records</h2>
+
+          <p>
+            A PACT record may contain information voluntarily entered
+            by the user.
+          </p>
+
+          <p>
+            The system also generates a unique PACT ID and records a
+            server-side creation timestamp.
+          </p>
+
+          <p>
+            The PACT creation timestamp is intended to represent when
+            the PACT system received the record. It is not a timestamp
+            selected by the user.
+          </p>
+
+
+          <h2>6. Reported Dates vs. PACT Creation Time</h2>
+
+          <p>
+            Users may report when an event allegedly occurred. This
+            reported date is different from the PACT creation timestamp.
+          </p>
+
+          <p>
+            A reported event date may describe an event that happened
+            before the PACT record was created.
+          </p>
+
+          <p>
+            PACT does not change a user's reported event date into a
+            system-certified event date.
+          </p>
+
+
+          <h2>7. How We Use Information</h2>
+
+          <p>
+            Information processed by PACT may be used to:
+          </p>
+
+          <ul>
+            <li>Create and maintain PACT records.</li>
+            <li>Associate records with authenticated users.</li>
+            <li>Generate PACT IDs.</li>
+            <li>Generate evidence fingerprints.</li>
+            <li>Display record information to the authorized user.</li>
+            <li>Generate evidence receipts.</li>
+            <li>Provide record verification functionality.</li>
+            <li>Maintain platform security and reliability.</li>
+          </ul>
+
+
+          <h2>8. Data Sharing</h2>
+
+          <p>
+            PACT does not intend to sell users' personal information.
+          </p>
+
+          <p>
+            Information may be processed by infrastructure providers
+            required to operate the service, such as authentication,
+            database, hosting and related technical services.
+          </p>
+
+          <p>
+            PACT may also disclose information when required by
+            applicable law or when necessary to protect the security
+            and integrity of the platform.
+          </p>
+
+
+          <h2>9. Record Access</h2>
+
+          <p>
+            PACT records are designed to be associated with the
+            authenticated account that created them.
+          </p>
+
+          <p>
+            Access controls are intended to prevent one user from
+            accessing another user's private record information.
+          </p>
+
+          <p>
+            Public verification functionality, where provided, should
+            expose only information intended for verification and
+            should not automatically expose private evidence files.
+          </p>
+
+
+          <h2>10. Data Security</h2>
+
+          <p>
+            PACT uses technical controls provided by its infrastructure
+            to help protect account and record information.
+          </p>
+
+          <p>
+            No internet service can guarantee absolute security.
+            Users should therefore avoid submitting highly sensitive
+            information unless it is necessary for the intended record.
+          </p>
+
+
+          <h2>11. Immutable Records</h2>
+
+          <p>
+            PACT V1 is designed so that finalized records are not
+            silently edited or deleted through the normal application
+            interface.
+          </p>
+
+          <p>
+            If a correction or amendment mechanism is introduced,
+            changes should be represented as a new version or amendment
+            rather than silently rewriting the original record.
+          </p>
+
+
+          <h2>12. User Responsibility</h2>
+
+          <p>
+            Users are responsible for ensuring that the information and
+            evidence they submit is appropriate for their intended use
+            and that they have the necessary rights or permission to
+            submit it.
+          </p>
+
+          <p>
+            Users should not submit passwords, private authentication
+            keys, financial credentials, or other secrets into ordinary
+            PACT record fields.
+          </p>
+
+
+          <h2>13. No Independent Verification</h2>
+
+          <div class="notice">
+            <strong>Important:</strong>
+            This record contains information and evidence submitted by
+            the user. PACT records the submission and its server
+            timestamp; it does not independently certify that the
+            underlying event occurred, authorize the action, or assume
+            liability for it.
+          </div>
+
+
+          <h2>14. Changes to This Policy</h2>
+
+          <p>
+            This Privacy Policy may be updated when PACT's features,
+            infrastructure or legal requirements change.
+          </p>
+
+          <p>
+            The latest version published on this page will apply to
+            future use of the service.
+          </p>
+
+
+          <h2>15. Contact</h2>
+
+          <p>
+            If PACT provides a dedicated support or privacy contact
+            channel, privacy-related questions can be submitted through
+            that channel.
+          </p>
+
+
+          <h2>16. Related Documents</h2>
+
+          <p>
+            Please also review:
+          </p>
+
+          <div class="button-row">
+
+            <a
+              href="./terms.html"
+              class="btn btn-ghost"
+            >
+              Terms
+            </a>
+
+            <a
+              href="./disclaimer.html"
+              class="btn btn-ghost"
+            >
+              Disclaimer
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <div>
+        <strong>PACT</strong>
+        <p>
+          Record Today. Prove Tomorrow.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="./privacy.html">Privacy</a>
+        <a href="./terms.html">Terms</a>
+        <a href="./disclaimer.html">Disclaimer</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+  </html>
