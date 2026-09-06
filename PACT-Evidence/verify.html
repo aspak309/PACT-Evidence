@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Verify a PACT evidence record using its unique PACT ID."
+  >
+
+  <meta
+    name="theme-color"
+    content="#070b14"
+  >
+
+  <title>Verify PACT Record</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+
+  <header class="nav">
+    <div class="container nav-inner">
+
+      <a href="index.html" class="brand">
+        PACT<span>.</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="create.html">Create Record</a>
+        <a href="verify.html">Verify</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- Page Header -->
+
+    <section class="page-header">
+
+      <div class="container">
+
+        <h1>Verify PACT Record</h1>
+
+        <p>
+          Enter a PACT ID to check whether the corresponding
+          record exists and review its recorded metadata.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Verification -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="card">
+
+          <div class="form">
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="pactIdInput"
+              >
+                PACT ID
+              </label>
+
+              <input
+                type="text"
+                id="pactIdInput"
+                name="pactId"
+                placeholder="Example: PACT-XXXXXXXX"
+                autocomplete="off"
+                spellcheck="false"
+              >
+
+              <span class="form-help">
+                Enter the complete PACT ID shown on the record receipt.
+              </span>
+
+            </div>
+
+
+            <button
+              type="button"
+              id="verifyBtn"
+              class="btn btn-primary"
+            >
+              Verify Record
+            </button>
+
+
+            <!-- Verification Status -->
+
+            <div
+              id="verifyStatus"
+              class="notice"
+              hidden
+              aria-live="polite"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Verification Result -->
+
+    <section
+      id="verificationResult"
+      class="section"
+      hidden
+    >
+
+      <div class="container">
+
+        <div class="card">
+
+          <div class="card-header">
+
+            <div>
+
+              <span class="badge">
+                RECORD FOUND
+              </span>
+
+              <h2>
+                PACT Record
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <!-- Record Metadata -->
+
+          <div class="grid grid-2">
+
+            <div class="form-group">
+
+              <span class="form-label">
+                PACT ID
+              </span>
+
+              <div
+                id="resultPactId"
+                class="result-value"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <span class="form-label">
+                Status
+              </span>
+
+              <div
+                id="resultStatus"
+                class="result-value"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <span class="form-label">
+                PACT Created At
+              </span>
+
+              <div
+                id="resultCreatedAt"
+                class="result-value"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <span class="form-label">
+                Reported Event Date
+              </span>
+
+              <div
+                id="resultEventDate"
+                class="result-value"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <span class="form-label">
+                Evidence Count
+              </span>
+
+              <div
+                id="resultEvidenceCount"
+                class="result-value"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <span class="form-label">
+                Evidence Fingerprint
+              </span>
+
+              <div
+                id="resultHash"
+                class="result-value result-hash"
+              >
+                —
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Trust Notice -->
+
+          <div class="notice warn">
+
+            <strong>Important:</strong>
+
+            A PACT record confirms that information and evidence
+            were submitted to PACT and recorded by its system.
+            It does not independently prove that the underlying
+            event occurred.
+
+          </div>
+
+
+          <!-- Actions -->
+
+          <div
+            class="actions"
+            style="margin-top:24px;"
+          >
+
+            <a
+              id="viewReceiptBtn"
+              href="#"
+              class="btn btn-primary"
+            >
+              View Receipt
+            </a>
+
+            <button
+              type="button"
+              id="copyVerificationBtn"
+              class="btn btn-ghost"
+            >
+              Copy Verification Link
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Not Found -->
+
+    <section
+      id="notFound"
+      class="section"
+      hidden
+    >
+
+      <div class="container">
+
+        <div class="card">
+
+          <span class="badge">
+            NOT FOUND
+          </span>
+
+          <h2>
+            PACT Record Not Found
+          </h2>
+
+          <p>
+            No accessible PACT record was found for the ID you entered.
+            Check the ID and try again.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Explanation -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="eyebrow">
+            HOW VERIFICATION WORKS
+          </span>
+
+          <h2>
+            A record, not a claim of truth.
+          </h2>
+
+          <p>
+            PACT helps preserve a structured record of submitted
+            information, its server-recorded creation time, and
+            evidence fingerprints.
+          </p>
+
+        </div>
+
+
+        <div class="grid grid-3">
+
+          <div class="card">
+
+            <span class="badge">
+              01
+            </span>
+
+            <h3>
+              PACT ID
+            </h3>
+
+            <p>
+              Every record receives a unique identifier.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <span class="badge">
+              02
+            </span>
+
+            <h3>
+              Timestamp
+            </h3>
+
+            <p>
+              The record creation time is generated by the
+              server rather than selected by the user.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <span class="badge">
+              03
+            </span>
+
+            <h3>
+              Fingerprint
+            </h3>
+
+            <p>
+              Supporting evidence can be represented by
+              SHA-256 fingerprints.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 PACT Evidence
+      </div>
+
+      <div class="footer-links">
+
+        <a href="privacy.html">
+          Privacy
+        </a>
+
+        <a href="terms.html">
+          Terms
+        </a>
+
+        <a href="disclaimer.html">
+          Disclaimer
+        </a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- Verification Logic -->
+
+  <script
+    type="module"
+    src="verify.js"
+  ></script>
+
+</body>
+</html>
