@@ -1,0 +1,85 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /*
+     * USER PROFILES
+     * Each authenticated user can access only
+     * their own profile document.
+     */
+    match /users/{userId} {
+
+      allow read: if request.auth != null
+                  && request.auth.uid == userId;
+
+      allow create: if request.auth != null
+                    && request.auth.uid == userId;
+
+      allow update: if request.auth != null
+                    && request.auth.uid == userId;
+
+      allow delete: if false;
+    }
+
+
+    /*
+     * PACT RECORDS
+     *
+     * Records are designed to be immutable after creation.
+     * Only the authenticated owner can read their record.
+     */
+    match /pactRecords/{recordId} {
+
+      /*
+       * CREATE
+       *
+       * The record must:
+       * - be created by an authenticated user
+       * - belong to that authenticated user
+       * - use the same PACT ID as the document ID
+       * - have RECORDED status
+       * - contain an accepted declaration
+       * - receive the trusted Firestore server timestamp
+       */
+      allow create: if request.auth != null
+                    && request.resource.data.ownerUid == request.auth.uid
+                    && request.resource.data.status == "RECORDED"
+                    && request.resource.data.pactId == recordId
+                    && request.resource.data.declarationAccepted == true
+                    && request.resource.data.createdAt == request.time;
+
+
+      /*
+       * READ
+       *
+       * Only the owner can read their private record.
+       */
+      allow read: if request.auth != null
+                  && resource.data.ownerUid == request.auth.uid;
+
+
+      /*
+       * IMMUTABLE RECORD
+       *
+       * Normal application users cannot modify
+       * or delete an existing PACT record.
+       */
+      allow update: if false;
+
+      allow delete: if false;
+    }
+
+
+    /*
+     * DEFAULT DENY
+     *
+     * Any Firestore collection/document not explicitly
+     * allowed above is inaccessible.
+     */
+    match /{document=**} {
+
+      allow read, write: if false;
+    }
+  }
+}
