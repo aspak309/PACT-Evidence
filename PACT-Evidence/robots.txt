@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /profile.html
+Disallow: /receipt.html
+Disallow: /create.html
+
+Sitemap: https://pact-evidence.web.app/sitemap.xml
