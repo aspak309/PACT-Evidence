@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Create a PACT evidence record."
+  >
+
+  <meta
+    name="theme-color"
+    content="#070b14"
+  >
+
+  <title>Create PACT Record</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+
+  <header class="nav">
+    <div class="container nav-inner">
+
+      <a href="index.html" class="brand">
+        PACT<span>.</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="create.html">Create Record</a>
+        <a href="verify.html">Verify</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- Page Header -->
+
+    <section class="page-header">
+
+      <div class="container">
+
+        <h1>Create PACT Record</h1>
+
+        <p>
+          Record important information and supporting evidence.
+          Your PACT creation timestamp is generated automatically
+          by the server and cannot be selected manually.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- Important Notice -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="notice warn">
+
+          <strong>Important:</strong>
+
+          PACT records information and evidence submitted by you.
+          PACT does not independently certify that the underlying
+          event occurred, authorize the action, or assume liability
+          for it.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Create Form -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="card">
+
+          <form
+            id="createRecordForm"
+            class="form"
+            novalidate
+          >
+
+            <!-- What happened -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="eventDescription"
+              >
+                1. What happened?
+              </label>
+
+              <textarea
+                id="eventDescription"
+                name="eventDescription"
+                placeholder="Describe the event or situation clearly..."
+                required
+              ></textarea>
+
+              <span class="form-help">
+                Give a clear factual description of what you are recording.
+              </span>
+
+            </div>
+
+
+            <!-- Instructor -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="instructor"
+              >
+                2. Who gave the instruction?
+              </label>
+
+              <input
+                type="text"
+                id="instructor"
+                name="instructor"
+                placeholder="Name, role, or source of the instruction"
+              >
+
+            </div>
+
+
+            <!-- Agent -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="agent"
+              >
+                3. AI / Person / System involved
+              </label>
+
+              <input
+                type="text"
+                id="agent"
+                name="agent"
+                placeholder="Example: AI system, employee, software, person"
+              >
+
+            </div>
+
+
+            <!-- Organization -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="organization"
+              >
+                4. Organization
+                <span class="form-help">(Optional)</span>
+              </label>
+
+              <input
+                type="text"
+                id="organization"
+                name="organization"
+                placeholder="Organization or company name"
+              >
+
+            </div>
+
+
+            <!-- Reported Event Date -->
+
+            <div class="grid grid-2">
+
+              <div class="form-group">
+
+                <label
+                  class="form-label"
+                  for="eventDate"
+                >
+                  5. Reported event date
+                </label>
+
+                <input
+                  type="date"
+                  id="eventDate"
+                  name="eventDate"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label
+                  class="form-label"
+                  for="eventTime"
+                >
+                  Reported event time
+                </label>
+
+                <input
+                  type="time"
+                  id="eventTime"
+                  name="eventTime"
+                >
+
+              </div>
+
+            </div>
+
+
+            <!-- Purpose -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="purpose"
+              >
+                6. Purpose
+              </label>
+
+              <textarea
+                id="purpose"
+                name="purpose"
+                placeholder="What was the intended purpose?"
+              ></textarea>
+
+            </div>
+
+
+            <!-- Authority -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="authority"
+              >
+                7. Authority / Limits
+              </label>
+
+              <textarea
+                id="authority"
+                name="authority"
+                placeholder="What authority, permission, restrictions, or limits were stated?"
+              ></textarea>
+
+            </div>
+
+
+            <!-- Outcome -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="outcome"
+              >
+                8. What actually happened?
+              </label>
+
+              <textarea
+                id="outcome"
+                name="outcome"
+                placeholder="Describe the actual action or outcome..."
+              ></textarea>
+
+            </div>
+
+
+            <!-- Evidence -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="evidenceFiles"
+              >
+                9. Supporting evidence
+              </label>
+
+              <input
+                type="file"
+                id="evidenceFiles"
+                name="evidenceFiles"
+                multiple
+                accept=".png,.jpg,.jpeg,.webp,.pdf,.txt,.csv,.json"
+              >
+
+              <span class="form-help">
+                Evidence is fingerprinted locally using SHA-256.
+                PACT V1 stores evidence metadata and fingerprints,
+                not the original file contents.
+              </span>
+
+            </div>
+
+
+            <!-- Automatic Timestamp -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="serverTimestamp"
+              >
+                10. PACT Created At
+              </label>
+
+              <input
+                type="text"
+                id="serverTimestamp"
+                value="Generated automatically by PACT server"
+                readonly
+                aria-readonly="true"
+              >
+
+              <span class="form-help">
+                This timestamp is recorded by the server when your
+                record is created. You cannot choose or edit it.
+              </span>
+
+            </div>
+
+
+            <!-- Declaration -->
+
+            <div class="form-group">
+
+              <label
+                class="form-label"
+                for="userDeclaration"
+              >
+                11. User declaration
+              </label>
+
+              <label
+                style="
+                  display:flex;
+                  gap:12px;
+                  align-items:flex-start;
+                  color:var(--muted);
+                "
+              >
+
+                <input
+                  type="checkbox"
+                  id="userDeclaration"
+                  name="userDeclaration"
+                  required
+                >
+
+                <span>
+                  I confirm that the information and evidence submitted
+                  by me is accurate to the best of my knowledge. I
+                  understand that PACT records my submission and does
+                  not independently confirm that the underlying event
+                  occurred.
+                </span>
+
+              </label>
+
+            </div>
+
+
+            <!-- Status -->
+
+            <div
+              id="formStatus"
+              class="notice"
+              hidden
+              aria-live="polite"
+            ></div>
+
+
+            <!-- Submit -->
+
+            <div>
+
+              <button
+                type="submit"
+                id="submitBtn"
+                class="btn btn-primary"
+              >
+                Create PACT Record
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <div>
+        © 2026 PACT Evidence
+      </div>
+
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- Application Logic -->
+
+  <script
+    type="module"
+    src="create.js"
+  ></script>
+
+</body>
+</html>
