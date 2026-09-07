@@ -2,22 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <meta
-    name="description"
-    content="PACT — Record important instructions, actions and supporting evidence with a trusted server timestamp."
-  />
-
-  <meta
-    name="theme-color"
-    content="#0b1220"
-  />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PACT — Record important instructions, actions and supporting evidence with a trusted server timestamp." />
+  <meta name="theme-color" content="#0b1220" />
   <title>PACT — Record Today. Prove Tomorrow.</title>
 
   <style>
@@ -42,21 +29,8 @@
 
     body {
       min-height: 100vh;
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-      background:
-        radial-gradient(
-          circle at top right,
-          rgba(79, 140, 255, 0.14),
-          transparent 32%
-        ),
-        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top right, rgba(79, 140, 255, 0.14), transparent 32%), var(--bg);
       color: var(--text);
       line-height: 1.6;
     }
@@ -72,7 +46,6 @@
     }
 
     /* Navigation */
-
     .nav {
       border-bottom: 1px solid var(--border);
       background: rgba(7, 11, 20, 0.92);
@@ -99,7 +72,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
@@ -116,20 +89,18 @@
     }
 
     /* Buttons */
-
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
+      min-height: 44px;
       padding: 0 18px;
       border-radius: 10px;
       border: 1px solid transparent;
       font-weight: 700;
+      font-size: 0.92rem;
       cursor: pointer;
-      transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .btn:hover {
@@ -156,7 +127,6 @@
     }
 
     /* Hero */
-
     .hero {
       padding: 90px 0 70px;
       text-align: center;
@@ -204,7 +174,6 @@
     }
 
     /* Notice */
-
     .notice {
       max-width: 900px;
       margin: 0 auto 70px;
@@ -220,7 +189,6 @@
     }
 
     /* Sections */
-
     .section {
       padding: 70px 0;
     }
@@ -241,7 +209,6 @@
     }
 
     /* Cards */
-
     .grid {
       display: grid;
       gap: 18px;
@@ -281,7 +248,6 @@
     }
 
     /* Trust */
-
     .trust {
       margin-top: 20px;
       border: 1px solid var(--border);
@@ -320,7 +286,6 @@
     }
 
     /* Footer */
-
     footer {
       margin-top: 50px;
       border-top: 1px solid var(--border);
@@ -347,7 +312,6 @@
     }
 
     /* Mobile */
-
     @media (max-width: 760px) {
       .nav-inner {
         padding: 12px 0;
@@ -357,6 +321,7 @@
 
       .nav-links {
         width: 100%;
+        justify-content: space-between;
       }
 
       .hero {
@@ -381,7 +346,6 @@
 <body>
 
   <!-- Navigation -->
-
   <header class="nav">
     <div class="container nav-inner">
 
@@ -390,20 +354,21 @@
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html">Home</a>
         <a href="create.html">Create Record</a>
         <a href="verify.html">Verify</a>
         <a href="profile.html">Profile</a>
+        <!-- Google Login Button -->
+        <button id="loginBtn" class="btn btn-primary" style="padding: 0 14px; min-height: 38px;">
+          Continue with Google
+        </button>
       </nav>
 
     </div>
   </header>
 
-
   <main>
 
     <!-- Hero -->
-
     <section class="hero">
       <div class="container">
 
@@ -423,181 +388,112 @@
         </p>
 
         <div class="hero-actions">
-
-          <a
-            href="create.html"
-            class="btn btn-primary"
-          >
+          <a href="create.html" class="btn btn-primary">
             Create PACT Record
           </a>
 
-          <a
-            href="verify.html"
-            class="btn btn-secondary"
-          >
+          <a href="verify.html" class="btn btn-secondary">
             Verify Record
           </a>
-
         </div>
 
       </div>
     </section>
 
-
     <!-- Important Notice -->
-
     <div class="container">
-
       <div class="notice">
-
         <strong>Important:</strong>
-
         PACT records information and evidence submitted by the user
         and records when the submission was received by our system.
-
         PACT does <strong>not</strong> independently certify that the
         underlying event occurred, authorize an action, act as a legal
         authority, or assume responsibility for the event.
-
       </div>
-
     </div>
 
-
     <!-- How It Works -->
-
     <section class="section">
-
       <div class="container">
-
         <div class="section-heading">
-
           <h2>How PACT Works</h2>
-
           <p>
             A simple record-first workflow for preserving important
             information and evidence.
           </p>
-
         </div>
 
-
         <div class="grid grid-3">
-
           <article class="card">
-
             <div class="card-number">01</div>
-
             <h3>Submit Information</h3>
-
             <p>
               Describe what happened, who gave the instruction,
               what system or person was involved, and what actually
               happened.
             </p>
-
           </article>
 
-
           <article class="card">
-
             <div class="card-number">02</div>
-
             <h3>Add Evidence</h3>
-
             <p>
               Add supporting evidence such as screenshots, documents,
               exports or other relevant files. PACT creates a digital
               fingerprint for submitted evidence.
             </p>
-
           </article>
 
-
           <article class="card">
-
             <div class="card-number">03</div>
-
             <h3>Get a PACT Record</h3>
-
             <p>
               Your record receives a unique PACT ID and a server-recorded
               creation timestamp that can be referenced later.
             </p>
-
           </article>
-
         </div>
-
       </div>
-
     </section>
 
-
     <!-- Trust / Responsibility -->
-
     <section class="section">
-
       <div class="container">
-
         <div class="trust">
-
           <h2>What PACT Actually Records</h2>
-
           <p>
             PACT is designed to preserve the record of a submission,
             not to replace independent investigation, legal authority,
             or professional verification.
           </p>
 
-
           <div class="trust-list">
-
             <div class="trust-item">
               <b>✓</b>
-              <span>
-                The information submitted by the user.
-              </span>
+              <span>The information submitted by the user.</span>
             </div>
-
             <div class="trust-item">
               <b>✓</b>
-              <span>
-                The time PACT receives and records the submission.
-              </span>
+              <span>The time PACT receives and records the submission.</span>
             </div>
-
             <div class="trust-item">
               <b>✓</b>
-              <span>
-                Evidence metadata and cryptographic fingerprints.
-              </span>
+              <span>Evidence metadata and cryptographic fingerprints.</span>
             </div>
-
             <div class="trust-item">
               <b>✓</b>
-              <span>
-                A unique PACT ID for future reference.
-              </span>
+              <span>A unique PACT ID for future reference.</span>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
 
   </main>
 
-
   <!-- Footer -->
-
   <footer>
-
     <div class="container footer-inner">
-
       <div>
         © 2026 PACT Evidence
       </div>
@@ -607,10 +503,10 @@
         <a href="terms.html">Terms</a>
         <a href="disclaimer.html">Disclaimer</a>
       </div>
-
     </div>
-
   </footer>
 
+  <!-- JavaScript module connected properly -->
+  <script type="module" src="app.js"></script>
 </body>
-</html> 
+</html>
